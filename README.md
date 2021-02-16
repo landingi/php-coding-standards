@@ -4,6 +4,17 @@ This repository aggregates configuration files from libraries we are using in co
 
 ## phpstan
 
+### Config
+```neon
+includes:
+	- vendor/landingi/php-coding-standards/phpstan.neon
+
+parameters:
+    #Your custom config
+```
+
+`vendor/bin/phpstan analyze -c phpstan.neon`
+
 ### packages
 * phpstan/phpstan
 * phpstan/phpstan-phpunit
@@ -14,6 +25,10 @@ This repository aggregates configuration files from libraries we are using in co
 * phpstan/phpstan-mockery
 
 ## ecs
+
+### Config
+
+`vendor/bin/ecs check --config vendor/landingi/php-coding-standards/ecs.php`
 
 ### packages
 * symplify/easy-coding-standard
