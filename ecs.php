@@ -27,7 +27,10 @@ return static function (ContainerConfigurator $containerConfigurator): void {
         ]
     ]);
     $parameters = $containerConfigurator->parameters();
-    $parameters->set(Option::PATHS, [__DIR__ . '/src', __DIR__ . '/tests']);
+    $parameters->set(Option::PATHS, [
+        dirname(__DIR__) . '/../../src',
+        dirname(__DIR__) . '/../../tests'
+    ]);
     $parameters->set(Option::SKIP, [
         BlankLineAfterOpeningTagFixer::class => null,
         NativeFunctionInvocationFixer::class => null,

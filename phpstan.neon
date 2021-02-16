@@ -1,12 +1,12 @@
 includes:
-	- vendor/phpstan/phpstan/conf/bleedingEdge.neon
-	- vendor/phpstan/phpstan-symfony/extension.neon
-	- vendor/phpstan/phpstan-phpunit/extension.neon
+	- ../../phpstan/phpstan/conf/bleedingEdge.neon
+	- ../../phpstan/phpstan-symfony/extension.neon
+	- ../../phpstan/phpstan-phpunit/extension.neon
 
 parameters:
-    level: 7
     paths:
-        - src
-        - tests
+        - ../../../src
+        - ../../../tests
+    level: 7
     checkMissingIterableValueType: false
     checkGenericClassInNonGenericObjectType: false
