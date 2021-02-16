@@ -1,5 +1,11 @@
 {
     "name": "landingi/php-coding-standards",
     "description": "Landingi Static Code Analyze Bundle",
-    "license": "MIT"
+    "license": "MIT",
+    "require": {
+        "php": ">=7.4",
+        "phpstan/phpstan": "^0.12",
+        "phpstan/phpstan-phpunit": "^0.12",
+        "phpstan/phpstan-symfony": "^0.12"
+    }
 }
