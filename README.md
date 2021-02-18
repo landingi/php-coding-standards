@@ -2,9 +2,15 @@
 
 This repository aggregates configuration files from libraries we are using in code testing
 
-## phpstan
+## Installation
 
-### Config
+`composer require --dev landingi/php-coding-standards`
+
+## Components
+
+### phpstan
+
+#### Config
 ```neon
 includes:
 	- vendor/landingi/php-coding-standards/phpstan.neon
@@ -15,35 +21,20 @@ parameters:
 
 `vendor/bin/phpstan analyze -c phpstan.neon`
 
-### packages
+#### Packages
 * phpstan/phpstan
 * phpstan/phpstan-phpunit
 * phpstan/phpstan-symfony
 
-#### Optional
+#### Optional packages
 * Jan0707/phpstan-prophecy - for Prophecy mocking tool
 * phpstan/phpstan-mockery
 
-## ecs
+### ecs
 
-### Config
+#### Config
 
 `vendor/bin/ecs check --config vendor/landingi/php-coding-standards/ecs.php`
 
-### packages
+#### Packages
 * symplify/easy-coding-standard
-
-## phpunit
-
-### packages
-* phpunit/phpunit
-* symfony/phpunit-bridge
-
-# Example Makefile
-
-```makefile
-ci:
-	bin/phpunit
-	vendor/bin/phpstan analyze -c phpstan.neon --memory-limit=256M
-	vendor/bin/ecs check src tests
-```
