@@ -20,9 +20,9 @@ return static function (ContainerConfigurator $containerConfigurator): void {
     $services->set(OrderedImportsFixer::class)->call('configure', [
         [
             'importsOrder' => [
-                OrderedImportsFixer::IMPORT_TYPE_CONST,
                 OrderedImportsFixer::IMPORT_TYPE_CLASS,
-                OrderedImportsFixer::IMPORT_TYPE_FUNCTION
+                OrderedImportsFixer::IMPORT_TYPE_FUNCTION,
+                OrderedImportsFixer::IMPORT_TYPE_CONST
             ]
         ]
     ]);
