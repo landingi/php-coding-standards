@@ -42,10 +42,8 @@ return static function (ContainerConfigurator $containerConfigurator): void {
         SingleLineThrowFixer::class => null,
         PhpdocAlignFixer::class => null,
     ]);
-    $parameters->set(Option::SETS, [
-        SetList::CLEAN_CODE,
-        SetList::PSR_12,
-        SetList::SYMFONY,
-        SetList::SYMFONY_RISKY,
-    ]);
+    $containerConfigurator->import(SetList::CLEAN_CODE);
+    $containerConfigurator->import(SetList::PSR_12);
+    $containerConfigurator->import(SetList::SYMFONY);
+    $containerConfigurator->import(SetList::SYMFONY_RISKY);
 };
