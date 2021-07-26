@@ -8,5 +8,8 @@
         "phpstan/phpstan-phpunit": "0.12.20",
         "phpstan/phpstan-symfony": "0.12.38",
         "symplify/easy-coding-standard": "9.4.22"
+    },
+    "require-dev": {
+        "roave/security-advisories": "dev-latest"
     }
 }
