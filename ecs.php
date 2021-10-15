@@ -12,7 +12,7 @@ return static function (ContainerConfigurator $containerConfigurator): void {
     ]);
     $services = $containerConfigurator->services();
 
-    //Class
+    //Class suffix
     $services->set(ClassNameSuffixFixer::class);
 
     //ControlStructure
