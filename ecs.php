@@ -12,6 +12,9 @@ return static function (ContainerConfigurator $containerConfigurator): void {
     ]);
     $services = $containerConfigurator->services();
 
+    //Class
+    $services->set(ClassNameSuffixFixer::class);
+
     //ControlStructure
     $services->set(\PhpCsFixer\Fixer\ControlStructure\NoUnneededControlParenthesesFixer::class);
     $services->set(\PhpCsFixer\Fixer\ControlStructure\NoUnneededCurlyBracesFixer::class);
