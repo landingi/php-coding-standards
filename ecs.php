@@ -15,6 +15,9 @@ return static function (ContainerConfigurator $containerConfigurator): void {
     //Class suffix
     $services->set(ClassNameSuffixFixer::class);
 
+    //Interface suffix
+    $services->set(InterfaceNameSuffixFixer::class);
+
     //ControlStructure
     $services->set(\PhpCsFixer\Fixer\ControlStructure\NoUnneededControlParenthesesFixer::class);
     $services->set(\PhpCsFixer\Fixer\ControlStructure\NoUnneededCurlyBracesFixer::class);

@@ -31,6 +31,6 @@ class ClassNameSuffixFixer extends \PhpCsFixer\AbstractFixer
 
     public function getDefinition(): \PhpCsFixer\FixerDefinition\FixerDefinitionInterface
     {
-        return new \PhpCsFixer\FixerDefinition\FixerDefinition('The sufdix `Entity`, `Service` should be not used in class names.', [new \PhpCsFixer\FixerDefinition\CodeSample("<?php\n class AccountEntity")]);
+        return new \PhpCsFixer\FixerDefinition\FixerDefinition('The suffix `Entity`, `Service` should be not used in class names.', [new \PhpCsFixer\FixerDefinition\CodeSample("<?php\n class AccountEntity")]);
     }
 }
