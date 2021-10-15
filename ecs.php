@@ -3,6 +3,8 @@ declare(strict_types=1);
 
 use Symfony\Component\DependencyInjection\Loader\Configurator\ContainerConfigurator;
 use Symplify\EasyCodingStandard\ValueObject\Option;
+use App\ClassNameSuffixFixer;
+use App\InterfaceNameSuffixFixer;
 
 return static function (ContainerConfigurator $containerConfigurator): void {
     $parameters = $containerConfigurator->parameters();
@@ -12,7 +14,7 @@ return static function (ContainerConfigurator $containerConfigurator): void {
     ]);
     $services = $containerConfigurator->services();
 
-    //Class suffix
+    //Class interface
     $services->set(ClassNameSuffixFixer::class);
 
     //Interface suffix
