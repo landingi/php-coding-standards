@@ -1,20 +1,20 @@
 {
-  "name": "landingi/php-coding-standards",
-  "description": "Landingi Static Code Analyze Bundle",
-  "license": "MIT",
-  "require": {
-    "php": ">=7.4",
-    "phpstan/phpstan": "0.12.91",
-    "phpstan/phpstan-phpunit": "0.12.20",
-    "phpstan/phpstan-symfony": "0.12.38",
-    "symplify/easy-coding-standard": "9.4.22"
-  },
-  "require-dev": {
-    "roave/security-advisories": "dev-latest"
-  },
-  "autoload": {
-    "psr-4": {
-      "Landingi\\": "src/"
+    "name": "landingi/php-coding-standards",
+    "description": "Landingi Static Code Analyze Bundle",
+    "license": "MIT",
+    "require": {
+        "php": ">=7.4",
+        "phpstan/phpstan": "0.12.91",
+        "phpstan/phpstan-phpunit": "0.12.20",
+        "phpstan/phpstan-symfony": "0.12.38",
+        "symplify/easy-coding-standard": "9.4.22"
+    },
+    "require-dev": {
+        "roave/security-advisories": "dev-latest"
+    },
+    "autoload": {
+        "psr-4": {
+            "Landingi\\": "src/"
+        }
     }
-  }
 }
