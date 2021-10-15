@@ -3,8 +3,8 @@ declare(strict_types=1);
 
 use Symfony\Component\DependencyInjection\Loader\Configurator\ContainerConfigurator;
 use Symplify\EasyCodingStandard\ValueObject\Option;
-use App\ClassNameSuffixFixer;
-use App\InterfaceNameSuffixFixer;
+use Landingi\ClassNameSuffixFixer;
+use Landingi\InterfaceNameSuffixFixer;
 
 return static function (ContainerConfigurator $containerConfigurator): void {
     $parameters = $containerConfigurator->parameters();
