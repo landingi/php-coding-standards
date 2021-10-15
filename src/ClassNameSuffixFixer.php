@@ -10,16 +10,16 @@ class ClassNameSuffixFixer extends \PhpCsFixer\AbstractFixer
     protected function applyFix(\SplFileInfo $file, Tokens $tokens)
     {
         foreach ($tokens as $index => $token) {
-            if ($token->getContent === 'class') {
-                $className = $tokens[$index + 2]->getContent();
+            if ($token->getContent() == 'class') {
+                $class = $tokens[$index + 2]->getContent();
 
-                if(str_contains($className, 'Entity')) {
-                    $newToken = str_replace("Entity", "", $className);
-                    $tokens[$index + 2] = new \PhpCsFixer\Tokenizer\Token([$newToken, $className]);
+                if (str_contains($class, 'Service')) {
+                    $newToken = str_replace("Service", "", $class);
+                    $tokens[$index + 2] = new \PhpCsFixer\Tokenizer\Token([$newToken, $class]);
                 }
-                if(str_contains($className, 'Service')) {
-                    $newToken = str_replace("Service", "", $className);
-                    $tokens[$index + 2] = new \PhpCsFixer\Tokenizer\Token([$newToken, $className]);
+                if (str_contains($class, 'Entity')) {
+                    $newToken = str_replace("Entity", "", $class);
+                    $tokens[$index + 2] = new \PhpCsFixer\Tokenizer\Token([$newToken, $class]);
                 }
             }
         }

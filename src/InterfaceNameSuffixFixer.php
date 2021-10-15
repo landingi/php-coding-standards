@@ -10,10 +10,10 @@ class InterfaceNameSuffixFixer extends \PhpCsFixer\AbstractFixer
     protected function applyFix(\SplFileInfo $file, Tokens $tokens)
     {
         foreach ($tokens as $index => $token) {
-            if ($token->getContent === 'interface') {
+            if ($token->getContent() == 'interface') {
                 $interfaceName = $tokens[$index + 2]->getContent();
 
-                if(str_contains($interfaceName, 'Interface')) {
+                if (str_contains($interfaceName, 'Interface')) {
                     $newToken = str_replace("Interface", "", $interfaceName);
                     $tokens[$index + 2] = new \PhpCsFixer\Tokenizer\Token([$newToken, $interfaceName]);
                 }
