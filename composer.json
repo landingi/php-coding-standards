@@ -10,11 +10,17 @@
         "symplify/easy-coding-standard": "9.4.22"
     },
     "require-dev": {
-        "roave/security-advisories": "dev-latest"
+        "roave/security-advisories": "dev-latest",
+        "symfony/dotenv": "^5.3"
     },
     "autoload": {
         "psr-4": {
             "Landingi\\": "src/"
+        }
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "Tests\\": "tests/"
         }
     }
 }
