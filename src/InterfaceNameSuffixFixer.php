@@ -4,8 +4,9 @@ declare(strict_types=1);
 namespace Landingi;
 
 use PhpCsFixer\Tokenizer\Tokens;
+use \PhpCsFixer\AbstractFixer;
 
-class InterfaceNameSuffixFixer extends \PhpCsFixer\AbstractFixer
+class InterfaceNameSuffixFixer extends AbstractFixer
 {
     protected function applyFix(\SplFileInfo $file, Tokens $tokens)
     {
