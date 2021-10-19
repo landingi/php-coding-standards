@@ -6,6 +6,8 @@ namespace Landingi;
 use PhpCsFixer\Tokenizer\Tokens;
 use \PhpCsFixer\AbstractFixer;
 use \PhpCsFixer\Tokenizer\Token;
+use \PhpCsFixer\FixerDefinition\FixerDefinitionInterface;
+use \PhpCsFixer\FixerDefinition\FixerDefinition;
 
 class InterfaceNameSuffixFixer extends AbstractFixer
 {
@@ -15,7 +17,7 @@ class InterfaceNameSuffixFixer extends AbstractFixer
             if ($token->getContent() == 'interface') {
                 $interfaceName = $tokens[$index + 2]->getContent();
 
-                if (str_contains($interfaceName, 'Interface')) {
+                if (str_contains($interfaceName, 'Interface') && str_ends_with($interfaceName, 'Interface')) {
                     $newToken = str_replace("Interface", "", $interfaceName);
                     $tokens[$index + 2] = new Token([$index + 2, $newToken]);
                 }
@@ -29,8 +31,8 @@ class InterfaceNameSuffixFixer extends AbstractFixer
         return true;
     }
 
-    public function getDefinition(): \PhpCsFixer\FixerDefinition\FixerDefinitionInterface
+    public function getDefinition(): FixerDefinitionInterface
     {
-        return new \PhpCsFixer\FixerDefinition\FixerDefinition('The suffix `Interface`, should be not used in interface names.', [new \PhpCsFixer\FixerDefinition\CodeSample("<?php\n interface AccountRepositoryInterface")]);
+        return new FixerDefinition('The suffix `Interface`, should be not used in interface names.', [new \PhpCsFixer\FixerDefinition\CodeSample("<?php\n interface AccountRepositoryInterface")]);
     }
 }

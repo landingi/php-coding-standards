@@ -3,9 +3,11 @@ declare(strict_types=1);
 
 namespace Landingi;
 
+use PhpCsFixer\AbstractFixer;
+use PhpCsFixer\Tokenizer\Token;
 use PhpCsFixer\Tokenizer\Tokens;
-use \PhpCsFixer\AbstractFixer;
-use \PhpCsFixer\Tokenizer\Token;
+use \PhpCsFixer\FixerDefinition\FixerDefinitionInterface;
+use \PhpCsFixer\FixerDefinition\FixerDefinition;
 
 class ClassNameSuffixFixer extends AbstractFixer
 {
@@ -15,11 +17,11 @@ class ClassNameSuffixFixer extends AbstractFixer
             if ($token->getContent() == 'class') {
                 $class = $tokens[$index + 2]->getContent();
 
-                if (str_contains($class, 'Service')) {
+                if (str_contains($class, 'Service') && str_ends_with($class, 'Service')) {
                     $newToken = str_replace("Service", "", $class);
-                    $tokens[$index + 2] = new \PhpCsFixer\Tokenizer\Token([$newToken, $class]);
+                    $tokens[$index + 2] = new Token([$index + 2, $newToken]);
                 }
-                if (str_contains($class, 'Entity')) {
+                if (str_contains($class, 'Entity') && str_ends_with($class, 'Entity')) {
                     $newToken = str_replace("Entity", "", $class);
                     $tokens[$index + 2] = new Token([$index + 2, $newToken]);
                 }
@@ -33,8 +35,8 @@ class ClassNameSuffixFixer extends AbstractFixer
         return true;
     }
 
-    public function getDefinition(): \PhpCsFixer\FixerDefinition\FixerDefinitionInterface
+    public function getDefinition(): FixerDefinitionInterface
     {
-        return new \PhpCsFixer\FixerDefinition\FixerDefinition('The suffix `Entity`, `Service` should be not used in class names.', [new \PhpCsFixer\FixerDefinition\CodeSample("<?php\n class AccountEntity")]);
+        return new FixerDefinition('The suffix `Entity`, `Service` should be not used in class names.', [new \PhpCsFixer\FixerDefinition\CodeSample("<?php\n class AccountEntity")]);
     }
 }

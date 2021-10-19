@@ -27,12 +27,25 @@ class ClassNameSuffixFixerTest extends TestCase
         }
         END;
     }
+
     private function getNotValidPhpCode(): string
     {
         return <<<END
         <?php
 
         class ExampleClassEntity
+        {
+        
+        }
+        END;
+    }
+
+    private function getValidPhpCodeWithSuffixOnStart(): string
+    {
+        return <<<END
+        <?php
+
+        class EntityExampleClass
         {
         
         }
@@ -53,5 +66,13 @@ class ClassNameSuffixFixerTest extends TestCase
         $this->fixer->fix(new \SplFileInfo(''), $tokens);
 
         static::assertEquals($tokens->generateCode(), $this->getValidPhpCode());
+    }
+
+    public function testDoesNotFixClassName(): void
+    {
+        $tokens = Tokens::fromCode($this->getValidPhpCodeWithSuffixOnStart());
+        $this->fixer->fix(new \SplFileInfo(''), $tokens);
+
+        static::assertEquals($tokens->generateCode(), $this->getValidPhpCodeWithSuffixOnStart());
     }
 }

@@ -40,6 +40,18 @@ class InterfaceNameSuffixFixerTest extends TestCase
         END;
     }
 
+    private function getValidPhpCodeWithInterfaceOnStart(): string
+    {
+        return <<<END
+        <?php
+
+        interface InterfaceExampleClass
+        {
+        
+        };
+        END;
+    }
+
     public function testDoesNotFixAnything(): void
     {
         $tokens = Tokens::fromCode($this->getValidPhpCode());
@@ -54,5 +66,13 @@ class InterfaceNameSuffixFixerTest extends TestCase
         $this->fixer->fix(new \SplFileInfo(''), $tokens);
 
         static::assertEquals($tokens->generateCode(), $this->getValidPhpCode());
+    }
+
+    public function testDoesFixInterfaceNameWhichStartsWithInterfaceSuffix(): void
+    {
+        $tokens = Tokens::fromCode($this->getValidPhpCodeWithInterfaceOnStart());
+        $this->fixer->fix(new \SplFileInfo(''), $tokens);
+
+        static::assertEquals($tokens->generateCode(), $this->getValidPhpCodeWithInterfaceOnStart());
     }
 }
