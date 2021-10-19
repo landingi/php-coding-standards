@@ -35,7 +35,6 @@ return static function (ContainerConfigurator $containerConfigurator): void {
 
     //Import
     $services->set(\PhpCsFixer\Fixer\Import\NoLeadingImportSlashFixer::class);
-    $services->set(\PhpCsFixer\Fixer\Import\NoUnusedImportsFixer::class);
     $services->set(\PhpCsFixer\Fixer\Import\SingleLineAfterImportsFixer::class);
     $services->set(\PhpCsFixer\Fixer\Import\NoUnusedImportsFixer::class);
     $services->set(\PhpCsFixer\Fixer\Import\OrderedImportsFixer::class)->call('configure', [['imports_order' => ['class', 'function', 'const']]]);
