@@ -5,6 +5,7 @@ namespace Landingi;
 
 use PhpCsFixer\Tokenizer\Tokens;
 use \PhpCsFixer\AbstractFixer;
+use \PhpCsFixer\Tokenizer\Token;
 
 class ClassNameSuffixFixer extends AbstractFixer
 {
@@ -20,7 +21,7 @@ class ClassNameSuffixFixer extends AbstractFixer
                 }
                 if (str_contains($class, 'Entity')) {
                     $newToken = str_replace("Entity", "", $class);
-                    $tokens[$index + 2] = new \PhpCsFixer\Tokenizer\Token([$newToken, $class]);
+                    $tokens[$index + 2] = new Token([$index + 2, $newToken]);
                 }
             }
         }

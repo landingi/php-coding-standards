@@ -5,6 +5,7 @@ namespace Landingi;
 
 use PhpCsFixer\Tokenizer\Tokens;
 use \PhpCsFixer\AbstractFixer;
+use \PhpCsFixer\Tokenizer\Token;
 
 class InterfaceNameSuffixFixer extends AbstractFixer
 {
@@ -16,7 +17,7 @@ class InterfaceNameSuffixFixer extends AbstractFixer
 
                 if (str_contains($interfaceName, 'Interface')) {
                     $newToken = str_replace("Interface", "", $interfaceName);
-                    $tokens[$index + 2] = new \PhpCsFixer\Tokenizer\Token([$newToken, $interfaceName]);
+                    $tokens[$index + 2] = new Token([$index + 2, $newToken]);
                 }
             }
         }
