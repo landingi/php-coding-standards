@@ -13,7 +13,6 @@
         "roave/security-advisories": "dev-latest",
         "symfony/dotenv": "^5.3",
         "phpunit/phpunit": "^9.5",
-        "symfony/test-pack": "^1.0"
     },
     "autoload": {
         "psr-4": {
