@@ -17,11 +17,11 @@ class ClassNameSuffixFixer extends AbstractFixer
             if ($token->getContent() == 'class') {
                 $class = $tokens[$index + 2]->getContent();
 
-                if (strpos($class, 'Service') !== false && $this->endsWith($class, 'Service')) {
+                if (str_contains($class, 'Service') && str_ends_with($class, 'Service')) {
                     $newToken = str_replace("Service", "", $class);
                     $tokens[$index + 2] = new Token([$index + 2, $newToken]);
                 }
-                if (strpos($class, 'Entity') !== false && $this->endsWith($class, 'Entity')) {
+                if (str_contains($class, 'Entity') && str_ends_with($class, 'Entity')) {
                     $newToken = str_replace("Entity", "", $class);
                     $tokens[$index + 2] = new Token([$index + 2, $newToken]);
                 }
@@ -38,14 +38,5 @@ class ClassNameSuffixFixer extends AbstractFixer
     public function getDefinition(): FixerDefinitionInterface
     {
         return new FixerDefinition('The suffix `Entity`, `Service` should be not used in class names.', [new \PhpCsFixer\FixerDefinition\CodeSample("<?php\n class AccountEntity")]);
-    }
-
-    private function endsWith($string, $endString): bool
-    {
-        $len = strlen($endString);
-        if ($len == 0) {
-            return true;
-        }
-        return (substr($string, -$len) === $endString);
     }
 }

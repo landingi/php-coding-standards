@@ -7,7 +7,8 @@
         "phpstan/phpstan": "0.12.91",
         "phpstan/phpstan-phpunit": "0.12.20",
         "phpstan/phpstan-symfony": "0.12.38",
-        "symplify/easy-coding-standard": "9.4.22"
+        "symplify/easy-coding-standard": "9.4.22",
+        "symfony/polyfill-php80": "^1.23"
     },
     "require-dev": {
         "roave/security-advisories": "dev-latest",
