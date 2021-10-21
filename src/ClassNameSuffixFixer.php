@@ -17,11 +17,11 @@ class ClassNameSuffixFixer extends AbstractFixer
             if ($token->getContent() == 'class') {
                 $class = $tokens[$index + 2]->getContent();
 
-                if (str_contains($class, 'Service') && $this->endsWith($class, 'Service')) {
+                if (strpos($class, 'Service') !== false && $this->endsWith($class, 'Service')) {
                     $newToken = str_replace("Service", "", $class);
                     $tokens[$index + 2] = new Token([$index + 2, $newToken]);
                 }
-                if (str_contains($class, 'Entity') && $this->endsWith($class, 'Entity')) {
+                if (strpos($class, 'Entity') !== false && $this->endsWith($class, 'Entity')) {
                     $newToken = str_replace("Entity", "", $class);
                     $tokens[$index + 2] = new Token([$index + 2, $newToken]);
                 }

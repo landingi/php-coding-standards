@@ -17,7 +17,7 @@ class InterfaceNameSuffixFixer extends AbstractFixer
             if ($token->getContent() == 'interface') {
                 $interfaceName = $tokens[$index + 2]->getContent();
 
-                if (str_contains($interfaceName, 'Interface') && $this->endsWith($interfaceName, 'Interface')) {
+                if (strpos($interfaceName, 'Interface') !== false && $this->endsWith($interfaceName, 'Interface')) {
                     $newToken = str_replace("Interface", "", $interfaceName);
                     $tokens[$index + 2] = new Token([$index + 2, $newToken]);
                 }
