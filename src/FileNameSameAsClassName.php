@@ -17,7 +17,7 @@ class FileNameSameAsClassName extends AbstractFixer
 
                 if ($file->getBasename() != $className) {
                     $directoryPath = str_replace(basename($file->getPathname()), '', $file->getPathname());
-                    rename($directoryPath.basename($file->getPathname()), $directoryPath.$className);
+                    rename($directoryPath.basename($file->getPathname()), $directoryPath.$className.'.php');
                 }
             }
         }

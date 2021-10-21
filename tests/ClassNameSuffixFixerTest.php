@@ -16,6 +16,30 @@ class ClassNameSuffixFixerTest extends TestCase
         $this->fixer = new ClassNameSuffixFixer();
     }
 
+    public function testDoesNotFixAnything(): void
+    {
+        $tokens = Tokens::fromCode($this->getValidPhpCode());
+        $this->fixer->fix(new \SplFileInfo(''), $tokens);
+
+        static::assertEquals($tokens->generateCode(), $this->getValidPhpCode());
+    }
+
+    public function testDoesFixClassName(): void
+    {
+        $tokens = Tokens::fromCode($this->getNotValidPhpCode());
+        $this->fixer->fix(new \SplFileInfo(''), $tokens);
+
+        static::assertEquals($tokens->generateCode(), $this->getValidPhpCode());
+    }
+
+    public function testDoesNotFixClassName(): void
+    {
+        $tokens = Tokens::fromCode($this->getValidPhpCodeWithSuffixOnStart());
+        $this->fixer->fix(new \SplFileInfo(''), $tokens);
+
+        static::assertEquals($tokens->generateCode(), $this->getValidPhpCodeWithSuffixOnStart());
+    }
+
     private function getValidPhpCode(): string
     {
         return <<<END
@@ -50,29 +74,5 @@ class ClassNameSuffixFixerTest extends TestCase
         
         }
         END;
-    }
-
-    public function testDoesNotFixAnything(): void
-    {
-        $tokens = Tokens::fromCode($this->getValidPhpCode());
-        $this->fixer->fix(new \SplFileInfo(''), $tokens);
-
-        static::assertEquals($tokens->generateCode(), $this->getValidPhpCode());
-    }
-
-    public function testDoesFixClassName(): void
-    {
-        $tokens = Tokens::fromCode($this->getNotValidPhpCode());
-        $this->fixer->fix(new \SplFileInfo(''), $tokens);
-
-        static::assertEquals($tokens->generateCode(), $this->getValidPhpCode());
-    }
-
-    public function testDoesNotFixClassName(): void
-    {
-        $tokens = Tokens::fromCode($this->getValidPhpCodeWithSuffixOnStart());
-        $this->fixer->fix(new \SplFileInfo(''), $tokens);
-
-        static::assertEquals($tokens->generateCode(), $this->getValidPhpCodeWithSuffixOnStart());
     }
 }
