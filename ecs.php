@@ -3,6 +3,8 @@ declare(strict_types=1);
 
 use Symfony\Component\DependencyInjection\Loader\Configurator\ContainerConfigurator;
 use Symplify\EasyCodingStandard\ValueObject\Option;
+use Landingi\ClassNameSuffixFixer;
+use Landingi\InterfaceNameSuffixFixer;
 
 return static function (ContainerConfigurator $containerConfigurator): void {
     $parameters = $containerConfigurator->parameters();
@@ -11,6 +13,12 @@ return static function (ContainerConfigurator $containerConfigurator): void {
         \dirname(__DIR__) . '/../../tests'
     ]);
     $services = $containerConfigurator->services();
+
+    //Class interface
+    $services->set(ClassNameSuffixFixer::class);
+
+    //Interface suffix
+    $services->set(InterfaceNameSuffixFixer::class);
 
     //ControlStructure
     $services->set(\PhpCsFixer\Fixer\ControlStructure\NoUnneededControlParenthesesFixer::class);

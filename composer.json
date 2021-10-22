@@ -7,9 +7,22 @@
         "phpstan/phpstan": "0.12.91",
         "phpstan/phpstan-phpunit": "0.12.20",
         "phpstan/phpstan-symfony": "0.12.38",
-        "symplify/easy-coding-standard": "9.4.22"
+        "symplify/easy-coding-standard": "9.4.22",
+        "symfony/polyfill-php80": "^1.23"
     },
     "require-dev": {
-        "roave/security-advisories": "dev-latest"
+        "roave/security-advisories": "dev-latest",
+        "symfony/dotenv": "^5.3",
+        "phpunit/phpunit": "^9.5"
+    },
+    "autoload": {
+        "psr-4": {
+            "Landingi\\": "src/"
+        }
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "Landingi\\": "tests/"
+        }
     }
 }
