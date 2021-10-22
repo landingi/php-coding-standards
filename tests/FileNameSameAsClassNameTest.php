@@ -1,9 +1,8 @@
 <?php
 declare(strict_types=1);
 
-namespace Tests;
+namespace Landingi;
 
-use Landingi\FileNameSameAsClassName;
 use PhpCsFixer\Tokenizer\Tokens;
 use PHPUnit\Framework\TestCase;
 
