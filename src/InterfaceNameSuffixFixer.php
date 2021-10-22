@@ -27,7 +27,6 @@ class InterfaceNameSuffixFixer extends AbstractFixer
 
     public function isCandidate(Tokens $tokens): bool
     {
-        //TODO narazie tak to zostawiam bo chce by sprawdzalo kazdy plik. W przyszlosci sie jakis pattern ogarnie.
         return true;
     }
 

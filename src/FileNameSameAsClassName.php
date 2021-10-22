@@ -25,7 +25,6 @@ class FileNameSameAsClassName extends AbstractFixer
 
     public function isCandidate(Tokens $tokens): bool
     {
-        //TODO mysle, ze tutaj zadnego patternu nie bedzie trzeba kazdy plik sprawdzac.
         return true;
     }
 
