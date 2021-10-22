@@ -4,10 +4,10 @@ declare(strict_types=1);
 namespace Landingi;
 
 use PhpCsFixer\Tokenizer\Tokens;
-use \PhpCsFixer\AbstractFixer;
-use \PhpCsFixer\Tokenizer\Token;
-use \PhpCsFixer\FixerDefinition\FixerDefinitionInterface;
-use \PhpCsFixer\FixerDefinition\FixerDefinition;
+use PhpCsFixer\AbstractFixer;
+use PhpCsFixer\Tokenizer\Token;
+use PhpCsFixer\FixerDefinition\FixerDefinitionInterface;
+use PhpCsFixer\FixerDefinition\FixerDefinition;
 
 class InterfaceNameSuffixFixer extends AbstractFixer
 {
