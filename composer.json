@@ -4,7 +4,7 @@
     "license": "MIT",
     "require": {
         "php": ">=7.4",
-        "phpstan/phpstan": "0.12.91",
+        "phpstan/phpstan": "0.12.99",
         "phpstan/phpstan-phpunit": "0.12.20",
         "phpstan/phpstan-symfony": "0.12.38",
         "symplify/easy-coding-standard": "9.4.22",
