@@ -5,6 +5,7 @@ use Symfony\Component\DependencyInjection\Loader\Configurator\ContainerConfigura
 use Symplify\EasyCodingStandard\ValueObject\Option;
 use Landingi\ClassNameSuffixFixer;
 use Landingi\InterfaceNameSuffixFixer;
+use Landingi\FileNameSameAsClassName;
 
 return static function (ContainerConfigurator $containerConfigurator): void {
     $parameters = $containerConfigurator->parameters();
@@ -13,6 +14,9 @@ return static function (ContainerConfigurator $containerConfigurator): void {
         \dirname(__DIR__) . '/../../tests'
     ]);
     $services = $containerConfigurator->services();
+
+    //Filename fixer
+    $services->set(FileNameSameAsClassName::class);
 
     //Class interface
     $services->set(ClassNameSuffixFixer::class);
