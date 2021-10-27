@@ -15,7 +15,7 @@ class FileNameSameAsClassName extends AbstractFixer
             if ($token->getContent() == 'class' || $token->getContent() == 'interface') {
                 $className = $tokens[$index + 2]->getContent();
 
-                if ($file->getBasename() != $className) {
+                if ($file->getBasename() != $className && $className !== ';') {
                     $directoryPath = str_replace(basename($file->getPathname()), '', $file->getPathname());
                     rename($directoryPath.basename($file->getPathname()), $directoryPath.$className.'.php');
                 }
