@@ -39,6 +39,14 @@ class ClassNameSuffixFixerTest extends TestCase
         static::assertEquals($tokens->generateCode(), $this->getValidPhpCodeWithSuffixOnStart());
     }
 
+    public function testExample(): void
+    {
+        $tokens = Tokens::fromCode(file_get_contents(dirname(__DIR__) . '/data/WfirmaTest.php'));
+        $this->fixer->fix(new \SplFileInfo(''), $tokens);
+
+        var_dump($tokens->generateCode());
+    }
+
     private function getValidPhpCode(): string
     {
         return <<<END
