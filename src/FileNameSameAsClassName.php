@@ -15,7 +15,7 @@ class FileNameSameAsClassName extends AbstractFixer
             if ($token->getContent() == 'class' || $token->getContent() == 'interface') {
                 $className = $tokens[$index + 2]->getContent();
 
-                if ($file->getBasename() != $className) {
+                if ($file->getBasename() != $className && $className !== ';') {
                     $directoryPath = str_replace(basename($file->getPathname()), '', $file->getPathname());
                     rename($directoryPath.basename($file->getPathname()), $directoryPath.$className.'.php');
                 }
@@ -30,6 +30,6 @@ class FileNameSameAsClassName extends AbstractFixer
 
     public function getDefinition(): FixerDefinition
     {
-        return new FixerDefinition('The name of class cannot be diffrent from the class name');
+        return new FixerDefinition('The name of class cannot be different from the class name');
     }
 }
