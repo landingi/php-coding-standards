@@ -15,15 +15,6 @@ return static function (ContainerConfigurator $containerConfigurator): void {
     ]);
     $services = $containerConfigurator->services();
 
-    //Filename fixer
-    $services->set(FileNameSameAsClassName::class);
-
-    //Class interface
-    $services->set(ClassNameSuffixFixer::class);
-
-    //Interface suffix
-    $services->set(InterfaceNameSuffixFixer::class);
-
     //ControlStructure
     $services->set(\PhpCsFixer\Fixer\ControlStructure\NoUnneededControlParenthesesFixer::class);
     $services->set(\PhpCsFixer\Fixer\ControlStructure\NoUnneededCurlyBracesFixer::class);
@@ -182,4 +173,13 @@ return static function (ContainerConfigurator $containerConfigurator): void {
     $services->set(\PhpCsFixer\Fixer\Naming\NoHomoglyphNamesFixer::class);
     $services->set(\PhpCsFixer\Fixer\StringNotation\SingleQuoteFixer::class);
     $services->set(\Symplify\CodingStandard\Fixer\Commenting\ParamReturnAndVarTagMalformsFixer::class);
+
+    //Filename fixer
+    $services->set(FileNameSameAsClassName::class);
+
+    //Class interface
+    $services->set(ClassNameSuffixFixer::class);
+
+    //Interface suffix
+    $services->set(InterfaceNameSuffixFixer::class);
 };
