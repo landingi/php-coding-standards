@@ -17,15 +17,15 @@ class InterfaceNameSuffixFixerTest extends TestCase
 
     public function testDoesNotFixAnything(): void
     {
-        $tokens = Tokens::fromCode(file_get_contents(dirname(__DIR__) . '/data/ExampleInterfaceClass.php'));
+        $tokens = Tokens::fromCode(file_get_contents(dirname(__DIR__) . '/data/interface/ExampleInterfaceClass.php'));
         $this->fixer->fix(new \SplFileInfo(''), $tokens);
 
-        static::assertEquals($tokens->generateCode(), file_get_contents(dirname(__DIR__) . '/data/ExampleInterfaceClass.php'));
+        static::assertEquals($tokens->generateCode(), file_get_contents(dirname(__DIR__) . '/data/interface/ExampleInterfaceClass.php'));
     }
 
     public function testDoesFixInterfaceName(): void
     {
-        $tokens = Tokens::fromCode(file_get_contents(dirname(__DIR__) . '/data/ExampleClassInterface.php'));
+        $tokens = Tokens::fromCode(file_get_contents(dirname(__DIR__) . '/data/interface/ExampleClassInterface.php'));
         $this->fixer->fix(new \SplFileInfo(''), $tokens);
 
         static::assertEquals($tokens->generateCode(), $this->getValidPhpCode());
@@ -33,7 +33,7 @@ class InterfaceNameSuffixFixerTest extends TestCase
 
     public function testDoesFixInterfaceNameWhichStartsWithInterfaceSuffix(): void
     {
-        $tokens = Tokens::fromCode(file_get_contents(dirname(__DIR__) . '/data/InterfaceExampleClass.php'));
+        $tokens = Tokens::fromCode(file_get_contents(dirname(__DIR__) . '/data/interface/InterfaceExampleClass.php'));
         $this->fixer->fix(new \SplFileInfo(''), $tokens);
 
         static::assertEquals($tokens->generateCode(), $this->getValidPhpCodeWithInterfaceOnStart());

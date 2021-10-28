@@ -17,8 +17,8 @@ class FileNameSameAsClassNameTest extends TestCase
 
     public function testDoesNotFix(): void
     {
-        $file = new \SplFileInfo(dirname(__DIR__) . '/data/test.php');
-        $tokens = Tokens::fromCode(file_get_contents(dirname(__DIR__) . '/data/test.php'));
+        $file = new \SplFileInfo(dirname(__DIR__) . '/data/changename/test.php');
+        $tokens = Tokens::fromCode(file_get_contents(dirname(__DIR__) . '/data/changename/test.php'));
         $this->fixer->fix($file, $tokens);
 
         static::assertEquals('test.php', $file->getBasename());
@@ -26,12 +26,12 @@ class FileNameSameAsClassNameTest extends TestCase
 
     public function testDoesFix(): void
     {
-        $file = new \SplFileInfo(dirname(__DIR__) . '/data/changenametest.php');
-        $tokens = Tokens::fromCode(file_get_contents(dirname(__DIR__) . '/data/changenametest.php'));
+        $file = new \SplFileInfo(dirname(__DIR__) . '/data/changename/changenametest.php');
+        $tokens = Tokens::fromCode(file_get_contents(dirname(__DIR__) . '/data/changename/changenametest.php'));
         $this->fixer->fix($file, $tokens);
-        $file = new \SplFileInfo(dirname(__DIR__) . '/data/ChangeToThatName.php');
+        $file = new \SplFileInfo(dirname(__DIR__) . '/data/changename/changenametest.php');
 
-        static::assertEquals('ChangeToThatName.php', $file->getBasename());
+        static::assertEquals('changenametest.php', $file->getBasename());
 
         $directoryPath = str_replace(basename($file->getPathname()), '', $file->getPathname());
         rename($directoryPath.basename($file->getPathname()), $directoryPath.'changenametest.php');
