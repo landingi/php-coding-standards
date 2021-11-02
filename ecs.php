@@ -5,7 +5,6 @@ use Symfony\Component\DependencyInjection\Loader\Configurator\ContainerConfigura
 use Symplify\EasyCodingStandard\ValueObject\Option;
 use Landingi\ClassNameSuffixFixer;
 use Landingi\InterfaceNameSuffixFixer;
-use Landingi\FileNameSameAsClassName;
 
 return static function (ContainerConfigurator $containerConfigurator): void {
     $parameters = $containerConfigurator->parameters();
