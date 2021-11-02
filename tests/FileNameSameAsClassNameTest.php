@@ -13,27 +13,77 @@ class FileNameSameAsClassNameTest extends TestCase
     protected function setUp(): void
     {
         $this->fixer = new FileNameSameAsClassName();
+        $file = fopen("tests/test.php", "w");
+        fclose($file);
     }
 
     public function testDoesNotFix(): void
     {
-        $file = new \SplFileInfo(dirname(__DIR__) . '/data/changename/test.php');
-        $tokens = Tokens::fromCode(file_get_contents(dirname(__DIR__) . '/data/changename/test.php'));
+        $file = new \SplFileInfo('tests/test.php');
+        $tokens = Tokens::fromCode($this->getValidPhpCode());
         $this->fixer->fix($file, $tokens);
 
         static::assertEquals('test.php', $file->getBasename());
+        unlink('tests/test.php');
     }
 
     public function testDoesFix(): void
     {
-        $file = new \SplFileInfo(dirname(__DIR__) . '/data/changename/changenametest.php');
-        $tokens = Tokens::fromCode(file_get_contents(dirname(__DIR__) . '/data/changename/changenametest.php'));
+        $file = new \SplFileInfo('tests/test.php');
+        $tokens = Tokens::fromCode($this->getNotValidPhpCode());
         $this->fixer->fix($file, $tokens);
-        $file = new \SplFileInfo(dirname(__DIR__) . '/data/changename/changenametest.php');
+        $file = new \SplFileInfo('tests/TestClass.php');
 
-        static::assertEquals('changenametest.php', $file->getBasename());
+        static::assertEquals('TestClass.php', $file->getBasename());
+        unlink('tests/TestClass.php');
+    }
 
-        $directoryPath = str_replace(basename($file->getPathname()), '', $file->getPathname());
-        rename($directoryPath.basename($file->getPathname()), $directoryPath.'changenametest.php');
+    public function testDoesFixWithFileWithSomeContent(): void
+    {
+        $file = new \SplFileInfo('tests/test.php');
+        $tokens = Tokens::fromCode($this->getNotValidPhpCodeWithContent());
+        $this->fixer->fix($file, $tokens);
+        $file = new \SplFileInfo('tests/TestClass.php');
+
+        static::assertEquals('TestClass.php', $file->getBasename());
+        unlink('tests/TestClass.php');
+    }
+
+    private function getValidPhpCode(): string
+    {
+        return <<<END
+        <?php
+
+        class test
+        {
+        
+        }
+        END;
+    }
+
+    private function getNotValidPhpCode(): string
+    {
+        return <<<END
+        <?php
+
+        class TestClass
+        {
+        
+        }
+        END;
+    }
+
+    private function getNotValidPhpCodeWithContent(): string
+    {
+        return <<<END
+        <?php
+
+        class TestClass
+        {
+        public function test(): string {
+            return 'test:)';
+         }
+        }
+        END;
     }
 }

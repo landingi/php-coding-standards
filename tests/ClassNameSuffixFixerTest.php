@@ -17,7 +17,7 @@ class ClassNameSuffixFixerTest extends TestCase
 
     public function testDoesNotFixAnything(): void
     {
-        $tokens = Tokens::fromCode(file_get_contents(dirname(__DIR__) . '/data/class/ExampleClass.php'));
+        $tokens = Tokens::fromCode($this->getValidPhpCode());
         $this->fixer->fix(new \SplFileInfo(''), $tokens);
 
         static::assertEquals($tokens->generateCode(), $this->getValidPhpCode());
@@ -25,7 +25,7 @@ class ClassNameSuffixFixerTest extends TestCase
 
     public function testDoesFixClassName(): void
     {
-        $tokens = Tokens::fromCode(file_get_contents(dirname(__DIR__) . '/data/class/ExampleClassEntity.php'));
+        $tokens = Tokens::fromCode($this->getNotValidPhpCode());
         $this->fixer->fix(new \SplFileInfo(''), $tokens);
 
         static::assertEquals($tokens->generateCode(), $this->getValidPhpCode());
@@ -33,7 +33,7 @@ class ClassNameSuffixFixerTest extends TestCase
 
     public function testDoesNotFixClassName(): void
     {
-        $tokens = Tokens::fromCode(file_get_contents(dirname(__DIR__) . '/data/class/EntityExampleClass.php'));
+        $tokens = Tokens::fromCode($this->getValidPhpCodeWithSuffixOnStart());
         $this->fixer->fix(new \SplFileInfo(''), $tokens);
 
         static::assertEquals($tokens->generateCode(), $this->getValidPhpCodeWithSuffixOnStart());
@@ -45,6 +45,18 @@ class ClassNameSuffixFixerTest extends TestCase
         <?php
 
         class ExampleClass
+        {
+        
+        }
+        END;
+    }
+
+    private function getNotValidPhpCode(): string
+    {
+        return <<<END
+        <?php
+
+        class ExampleClassEntity
         {
         
         }
