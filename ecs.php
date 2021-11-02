@@ -174,9 +174,6 @@ return static function (ContainerConfigurator $containerConfigurator): void {
     $services->set(\PhpCsFixer\Fixer\StringNotation\SingleQuoteFixer::class);
     $services->set(\Symplify\CodingStandard\Fixer\Commenting\ParamReturnAndVarTagMalformsFixer::class);
 
-    //Filename fixer
-    $services->set(FileNameSameAsClassName::class);
-
     //Class interface
     $services->set(ClassNameSuffixFixer::class);
 
