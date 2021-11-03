@@ -25,6 +25,7 @@ parameters:
 * phpstan/phpstan
 * phpstan/phpstan-phpunit
 * phpstan/phpstan-symfony
+* phpstan/phpstan-doctrine
 
 #### Optional packages
 * Jan0707/phpstan-prophecy - for Prophecy mocking tool
