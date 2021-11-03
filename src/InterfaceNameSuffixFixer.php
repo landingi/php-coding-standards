@@ -8,6 +8,7 @@ use PhpCsFixer\FixerDefinition\FixerDefinition;
 use PhpCsFixer\FixerDefinition\FixerDefinitionInterface;
 use PhpCsFixer\Tokenizer\Token;
 use PhpCsFixer\Tokenizer\Tokens;
+use function str_ends_with;
 
 class InterfaceNameSuffixFixer implements FixerInterface
 {
