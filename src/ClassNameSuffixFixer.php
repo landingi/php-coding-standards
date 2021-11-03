@@ -15,13 +15,7 @@ class ClassNameSuffixFixer implements FixerInterface
 {
     public function isCandidate(Tokens $tokens): bool
     {
-        foreach ($tokens as $index => $token) {
-            if ($token->getContent() === 'class') {
-                return true;
-            }
-        }
-
-        return false;
+        return $tokens->isAllTokenKindsFound([T_CLASS]);
     }
 
     public function isRisky(): bool
@@ -31,8 +25,11 @@ class ClassNameSuffixFixer implements FixerInterface
 
     public function fix(SplFileInfo $file, Tokens $tokens): void
     {
+        /**
+         * @var Token $token
+         */
         foreach ($tokens as $index => $token) {
-            if ($token->getContent() === 'class') {
+            if ($token->isGivenKind(T_CLASS)) {
                 $class = $tokens[$index + 2]->getContent();
 
                 if (str_ends_with($class, 'Service') || str_ends_with($class, 'Entity')) {
