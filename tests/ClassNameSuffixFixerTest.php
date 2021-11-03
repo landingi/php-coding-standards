@@ -42,5 +42,13 @@ class ClassNameSuffixFixerTest extends TestCase
             file_get_contents('tests/class_name_suffix_fixer/test_2_input.php'),
             file_get_contents('tests/class_name_suffix_fixer/test_2_output.php')
         ];
+        yield [
+            file_get_contents('tests/class_name_suffix_fixer/test_3_input.php'),
+            file_get_contents('tests/class_name_suffix_fixer/test_3_output.php')
+        ];
+        yield [
+            file_get_contents('tests/class_name_suffix_fixer/test_4_input.php'),
+            file_get_contents('tests/class_name_suffix_fixer/test_4_output.php')
+        ];
     }
 }
