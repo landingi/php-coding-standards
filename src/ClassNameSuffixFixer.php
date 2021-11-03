@@ -10,6 +10,8 @@ use PhpCsFixer\FixerDefinition\FixerDefinitionInterface;
 use PhpCsFixer\Tokenizer\Token;
 use PhpCsFixer\Tokenizer\Tokens;
 use SplFileInfo;
+use function str_ends_with;
+use function str_replace;
 
 class ClassNameSuffixFixer implements FixerInterface
 {
