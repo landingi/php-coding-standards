@@ -35,16 +35,16 @@ class InterfaceNameSuffixFixerTest extends TestCase
     public function data(): Generator
     {
         yield [
-            file_get_contents('tests/class_name_suffix_fixer/test_1_interface_input.php'),
-            file_get_contents('tests/class_name_suffix_fixer/test_1_interface_output.php'),
+            file_get_contents('tests/interface_name_suffix_fixer/test_1_input.php'),
+            file_get_contents('tests/interface_name_suffix_fixer/test_1_output.php'),
         ];
         yield [
-            file_get_contents('tests/class_name_suffix_fixer/test_2_interface_input.php'),
-            file_get_contents('tests/class_name_suffix_fixer/test_2_interface_output.php'),
+            file_get_contents('tests/interface_name_suffix_fixer/test_2_input.php'),
+            file_get_contents('tests/interface_name_suffix_fixer/test_2_output.php'),
         ];
         yield [
-            file_get_contents('tests/class_name_suffix_fixer/test_3_interface_input.php'),
-            file_get_contents('tests/class_name_suffix_fixer/test_3_interface_output.php'),
+            file_get_contents('tests/interface_name_suffix_fixer/test_3_input.php'),
+            file_get_contents('tests/interface_name_suffix_fixer/test_3_output.php'),
         ];
     }
 }
