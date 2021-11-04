@@ -5,6 +5,7 @@
     "require": {
         "php": ">=7.4",
         "phpstan/phpstan": "0.12.99",
+        "phpstan/phpstan-doctrine": "0.12.44",
         "phpstan/phpstan-phpunit": "0.12.22",
         "phpstan/phpstan-symfony": "0.12.44",
         "symplify/easy-coding-standard": "9.4.22",
