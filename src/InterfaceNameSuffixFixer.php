@@ -3,35 +3,73 @@ declare(strict_types=1);
 
 namespace Landingi;
 
-use PhpCsFixer\Tokenizer\Tokens;
-use PhpCsFixer\AbstractFixer;
-use PhpCsFixer\Tokenizer\Token;
-use PhpCsFixer\FixerDefinition\FixerDefinitionInterface;
+use PhpCsFixer\Fixer\FixerInterface;
+use PhpCsFixer\FixerDefinition\CodeSample;
 use PhpCsFixer\FixerDefinition\FixerDefinition;
+use PhpCsFixer\FixerDefinition\FixerDefinitionInterface;
+use PhpCsFixer\Tokenizer\Token;
+use PhpCsFixer\Tokenizer\Tokens;
+use SplFileInfo;
+use function str_ends_with;
+use function str_replace;
 
-class InterfaceNameSuffixFixer extends AbstractFixer
+class InterfaceNameSuffixFixer implements FixerInterface
 {
-    protected function applyFix(\SplFileInfo $file, Tokens $tokens)
+    public function isCandidate(Tokens $tokens): bool
+    {
+        return $tokens->isAllTokenKindsFound([T_INTERFACE]);
+    }
+
+    public function isRisky(): bool
+    {
+        return false;
+    }
+
+    public function fix(SplFileInfo $file, Tokens $tokens): void
     {
         foreach ($tokens as $index => $token) {
-            if ($token->getContent() == 'interface') {
+            if ($token->isGivenKind(T_INTERFACE)) {
                 $interfaceName = $tokens[$index + 2]->getContent();
 
-                if (str_contains($interfaceName, 'Interface') && str_ends_with($interfaceName, 'Interface')) {
-                    $newToken = str_replace("Interface", "", $interfaceName);
+                if (str_ends_with($interfaceName, 'Interface')) {
+                    $newToken = str_replace('Interface', '', $interfaceName);
                     $tokens[$index + 2] = new Token([$index + 2, $newToken]);
                 }
             }
         }
     }
 
-    public function isCandidate(Tokens $tokens): bool
-    {
-        return true;
-    }
 
     public function getDefinition(): FixerDefinitionInterface
     {
-        return new FixerDefinition('The suffix `Interface`, should be not used in interface names.', [new \PhpCsFixer\FixerDefinition\CodeSample("<?php\n interface AccountRepositoryInterface")]);
+        $codeSample = <<<PHP
+<?php
+
+class PaymentInterface
+{
+}
+PHP;
+
+        return new FixerDefinition(
+            'Removes interface suffix from interfaces',
+            [
+                new CodeSample($codeSample)
+            ]
+        );
+    }
+
+    public function getName(): string
+    {
+        return 'interface_name_suffix';
+    }
+
+    public function getPriority(): int
+    {
+        return 0;
+    }
+
+    public function supports(SplFileInfo $file): bool
+    {
+        return true;
     }
 }
