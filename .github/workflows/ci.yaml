@@ -17,5 +17,5 @@ jobs:
             -   uses: shivammathur/setup-php@v2
                 with:
                     php-version: ${{ matrix.php_version }}
-
+            -   run: composer install
             -   run: make ci
