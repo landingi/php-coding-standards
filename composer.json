@@ -4,10 +4,10 @@
     "license": "MIT",
     "require": {
         "php": ">=7.4",
-        "phpstan/phpstan": "0.12.99",
-        "phpstan/phpstan-doctrine": "0.12.44",
-        "phpstan/phpstan-phpunit": "0.12.22",
-        "phpstan/phpstan-symfony": "0.12.44",
+        "phpstan/phpstan": "1.4.2",
+        "phpstan/phpstan-doctrine": "1.1.0",
+        "phpstan/phpstan-phpunit": "1.0.0",
+        "phpstan/phpstan-symfony": "1.1.2",
         "symplify/easy-coding-standard": "9.4.22",
         "symfony/polyfill-php80": "^1.23",
         "povils/phpmnd": "^2.4"
