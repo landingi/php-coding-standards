@@ -31,7 +31,7 @@ class InterfaceNameSuffixFixer implements FixerInterface
             if ($token->isGivenKind(T_INTERFACE)) {
                 $interfaceName = $tokens[$index + 2]->getContent();
 
-                if (str_ends_with($interfaceName, 'Interface')) {
+                if (str_ends_with($interfaceName, 'Interface') && $interfaceName !== 'CreatorInterface') {
                     $newToken = str_replace('Interface', '', $interfaceName);
                     $tokens[$index + 2] = new Token([$index + 2, $newToken]);
                 }
