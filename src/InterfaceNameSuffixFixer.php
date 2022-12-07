@@ -31,14 +31,13 @@ class InterfaceNameSuffixFixer implements FixerInterface
             if ($token->isGivenKind(T_INTERFACE)) {
                 $interfaceName = $tokens[$index + 2]->getContent();
 
-                if (str_ends_with($interfaceName, 'Interface') && $interfaceName !== 'CreatorInterface') {
+                if (str_ends_with($interfaceName, 'Interface') && 'CreatorInterface' !== $interfaceName) {
                     $newToken = str_replace('Interface', '', $interfaceName);
                     $tokens[$index + 2] = new Token([$index + 2, $newToken]);
                 }
             }
         }
     }
-
 
     public function getDefinition(): FixerDefinitionInterface
     {
@@ -53,7 +52,7 @@ PHP;
         return new FixerDefinition(
             'Removes interface suffix from interfaces',
             [
-                new CodeSample($codeSample)
+                new CodeSample($codeSample),
             ]
         );
     }

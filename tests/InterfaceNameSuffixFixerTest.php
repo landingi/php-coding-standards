@@ -30,7 +30,7 @@ class InterfaceNameSuffixFixerTest extends TestCase
     }
 
     /**
-     * yields [Code to Fix, Expected Result]
+     * yields [Code to Fix, Expected Result].
      */
     public function data(): Generator
     {

@@ -55,7 +55,7 @@ PHP;
         return new FixerDefinition(
             'Removes Service and Entity class suffix',
             [
-                new CodeSample($codeSample)
+                new CodeSample($codeSample),
             ]
         );
     }
