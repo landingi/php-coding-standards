@@ -1,18 +1,16 @@
 <?php
 declare(strict_types=1);
 
-use Symfony\Component\DependencyInjection\Loader\Configurator\ContainerConfigurator;
-use Symplify\EasyCodingStandard\ValueObject\Option;
+use Symplify\EasyCodingStandard\Config\ECSConfig;
 use Landingi\ClassNameSuffixFixer;
 use Landingi\InterfaceNameSuffixFixer;
 
-return static function (ContainerConfigurator $containerConfigurator): void {
-    $parameters = $containerConfigurator->parameters();
-    $parameters->set(Option::PATHS, [
+return static function (ECSConfig $ecsConfig): void {
+    $ecsConfig->paths([
         \dirname(__DIR__) . '/../../src',
         \dirname(__DIR__) . '/../../tests'
     ]);
-    $services = $containerConfigurator->services();
+    $services = $ecsConfig->services();
 
     //ControlStructure
     $services->set(\PhpCsFixer\Fixer\ControlStructure\NoUnneededControlParenthesesFixer::class);

@@ -30,25 +30,25 @@ class ClassNameSuffixFixerTest extends TestCase
     }
 
     /**
-     * yields [Code to Fix, Expected Result]
+     * yields [Code to Fix, Expected Result].
      */
     public function data(): Generator
     {
         yield [
             file_get_contents('tests/class_name_suffix_fixer/test_1_input.php'),
-            file_get_contents('tests/class_name_suffix_fixer/test_1_output.php')
+            file_get_contents('tests/class_name_suffix_fixer/test_1_output.php'),
         ];
         yield [
             file_get_contents('tests/class_name_suffix_fixer/test_2_input.php'),
-            file_get_contents('tests/class_name_suffix_fixer/test_2_output.php')
+            file_get_contents('tests/class_name_suffix_fixer/test_2_output.php'),
         ];
         yield [
             file_get_contents('tests/class_name_suffix_fixer/test_3_input.php'),
-            file_get_contents('tests/class_name_suffix_fixer/test_3_output.php')
+            file_get_contents('tests/class_name_suffix_fixer/test_3_output.php'),
         ];
         yield [
             file_get_contents('tests/class_name_suffix_fixer/test_4_input.php'),
-            file_get_contents('tests/class_name_suffix_fixer/test_4_output.php')
+            file_get_contents('tests/class_name_suffix_fixer/test_4_output.php'),
         ];
     }
 }
